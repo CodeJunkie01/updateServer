@@ -13,7 +13,7 @@ app.get('/update', (req,res) => {
  res.json(["SUCCESS"]);
 })
 
-app.get('/newApp', (req,res)=> {
+app.post('/newApp', (req,res)=> {
     if(req.body.newProfile){
         const newProfile = req.body.newProfile;
     } else {
