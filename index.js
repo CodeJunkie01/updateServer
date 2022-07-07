@@ -14,12 +14,10 @@ app.get('/update', (req,res) => {
 })
 
 app.post('/newApp', (req,res)=> {
-    if(req.body.newProfile){
+    
         const {newProfile} = req.body;
-    } else {
-        console.log("no Profile found");
-        return res.json("no Profile found");
-    }
+    
+        
     
     fs.readFile('../prod/appConfigs.js', 'utf-8', function(err, data){
         if (err) throw err;
