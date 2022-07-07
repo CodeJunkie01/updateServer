@@ -2,6 +2,7 @@
 const shell = require('shelljs')
 var express = require('express')
 var app = express()
+var fs = require('fs')
 
 app.listen(3001, () => {
  console.log("Server running on port 3000");
