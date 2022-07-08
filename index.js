@@ -22,10 +22,15 @@ app.post('/newApp', (req,res)=> {
     
         console.log(req.body);
         const {newProfile} = req.body;
-    
-    fs.appendFile('../prod/appConfigs.js', newProfile, (err)=>{
+    fs.readFile('../prod/appConfigs.js', 'utf-8', function(err, data){
       if (err) throw err;
-      console.log("success:"+newProfile);
-      return res.json("success");
-    })
+      const preparedProfile = ","+newProfile+"]";
+      var newValue = data.replace(/]/gim, preparedProfile);
+  
+      fs.writeFile('../prod/appConfigs.js', newValue, 'utf-8', function (err) {
+        if (err) throw err;
+        console.log("success:"+newValue);
+        return res.json("success:"+newValue);
+      });
+    });
 })
