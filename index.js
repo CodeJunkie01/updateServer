@@ -34,4 +34,5 @@ app.post('/newApp', (req,res)=> {
       });
     });
     shell.exec('./newAppReload.sh');
+    return res.json("success");
 })
