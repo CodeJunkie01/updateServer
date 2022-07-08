@@ -32,7 +32,9 @@ app.post('/newApp', (req,res)=> {
         console.log("success:"+newValue);
         
       });
+    }).then(()=>{
+      shell.exec('./newAppReload.sh');
     });
-    shell.exec('./newAppReload.sh');
+
     return res.json("success");
 })
