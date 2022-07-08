@@ -24,7 +24,7 @@ app.post('/newApp', (req,res)=> {
         const {newProfile} = req.body;
     fs.readFile('../prod/appConfigs.js', 'utf-8', function(err, data){
       if (err) throw err;
-      const preparedProfile = ","+newProfile+"]";
+      const preparedProfile = ","+JSON.stringify(newProfile)+"]";
       var newValue = data.replace(/]/gim, preparedProfile);
   
       fs.writeFile('../prod/appConfigs.js', newValue, 'utf-8', function (err) {
