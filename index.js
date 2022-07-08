@@ -30,10 +30,8 @@ app.post('/newApp', (req,res)=> {
       fs.writeFile('../prod/appConfigs.js', newValue, 'utf-8', function (err) {
         if (err) throw err;
         console.log("success:"+newValue);
-        
+        shell.exec('./newAppReload.sh');
       });
-    }).then(()=>{
-      shell.exec('./newAppReload.sh');
     });
 
     return res.json("success");
